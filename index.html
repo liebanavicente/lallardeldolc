@@ -16,10 +16,16 @@
       --accent:  #C9A96E;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
     body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
     h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; line-height: 1.15; }
-    a { text-decoration: none; color: inherit; transition: opacity 0.2s; }
+    a {
+      text-decoration: none; color: inherit;
+      transition: color 0.3s ease, opacity 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    }
     img { display: block; }
     .container { width: min(1120px, 92%); margin: 0 auto; }
 
@@ -33,9 +39,9 @@
     .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; letter-spacing: 0.04em; color: var(--ink); }
     .logo em { font-style: italic; color: var(--accent); }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; align-items: center; }
-    .nav-links a { color: var(--mid); transition: color 0.2s; }
+    .nav-links a { color: var(--mid); }
     .nav-links a:hover { color: var(--ink); }
-    .nav-cta { border: 1px solid var(--ink); padding: 0.5rem 1.25rem; color: var(--ink) !important; letter-spacing: 0.08em; transition: background 0.2s, color 0.2s !important; }
+    .nav-cta { border: 1px solid var(--ink); padding: 0.5rem 1.25rem; color: var(--ink) !important; letter-spacing: 0.08em; transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease !important; }
     .nav-cta:hover { background: var(--ink); color: var(--white) !important; opacity: 1 !important; }
     .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--ink); }
 
@@ -50,13 +56,22 @@
     .hero-left h1 em { font-style: italic; font-weight: 400; }
     .hero-left p { font-size: 1rem; color: var(--mid); max-width: 40ch; margin-bottom: 2.5rem; line-height: 1.8; }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-dark { display: inline-block; padding: 0.85rem 2rem; background: var(--ink); color: var(--white); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; transition: opacity 0.2s; }
-    .btn-dark:hover { opacity: 0.75; }
-    .btn-outline { display: inline-block; padding: 0.85rem 2rem; border: 1px solid var(--border); color: var(--mid); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; transition: border-color 0.2s, color 0.2s; }
-    .btn-outline:hover { border-color: var(--ink); color: var(--ink); }
+    .btn-dark {
+      display: inline-block; padding: 0.85rem 2rem; background: var(--ink); color: var(--white);
+      font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+      transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn-dark:hover { opacity: 0.85; transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-block; padding: 0.85rem 2rem; border: 1px solid var(--border); color: var(--mid);
+      font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+      transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+    .btn-outline:hover { border-color: var(--ink); color: var(--ink); transform: translateY(-2px); }
 
     .hero-right { position: relative; overflow: hidden; }
-    .hero-right img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-right img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+    .hero-right:hover img { transform: scale(1.03); }
 
     /* DIVIDER */
     .divider-line { border: none; border-top: 1px solid var(--border); margin: 0; }
@@ -77,11 +92,18 @@
     .section-sub { font-size: 0.875rem; color: var(--mid); max-width: 36ch; line-height: 1.7; }
 
     .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-    .product-card { background: var(--bg); overflow: hidden; transition: background 0.2s; }
-    .product-card:hover { background: var(--white); }
+    .product-card {
+      background: var(--bg); overflow: hidden;
+      transition: background 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .product-card:hover {
+      background: var(--white);
+      transform: translateY(-6px) scale(1.006);
+      box-shadow: 0 16px 48px rgba(26, 23, 20, 0.07);
+    }
     .product-img { height: 280px; overflow: hidden; }
-    .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-    .product-card:hover .product-img img { transform: scale(1.04); }
+    .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; }
+    .product-card:hover .product-img img { transform: scale(1.05); }
     .product-body { padding: 1.75rem; }
     .product-tag { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
     .product-body h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
@@ -89,7 +111,7 @@
     .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--border); }
     .product-price { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--ink); }
     .product-price small { font-family: 'Inter', sans-serif; font-size: 0.7rem; color: var(--muted); margin-left: 4px; }
-    .product-link { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); border-bottom: 1px solid var(--border); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
+    .product-link { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); border-bottom: 1px solid var(--border); padding-bottom: 1px; }
     .product-link:hover { color: var(--ink); border-color: var(--ink); }
 
     /* HOW */
@@ -104,7 +126,8 @@
     .contact { padding: 6rem 0; }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
     .contact-img { height: 480px; overflow: hidden; }
-    .contact-img img { width: 100%; height: 100%; object-fit: cover; }
+    .contact-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; }
+    .contact-img:hover img { transform: scale(1.04); }
     .contact-text .section-eyebrow { margin-bottom: 0.75rem; }
     .contact-text h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.25rem; }
     .contact-text p { font-size: 0.9rem; color: var(--mid); line-height: 1.8; margin-bottom: 2.5rem; max-width: 40ch; }
@@ -112,7 +135,7 @@
     .contact-item { display: flex; flex-direction: column; gap: 4px; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
     .contact-item:last-child { border-bottom: none; padding-bottom: 0; }
     .contact-item .lbl { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
-    .contact-item a { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--ink); transition: color 0.2s; }
+    .contact-item a { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--ink); }
     .contact-item a:hover { color: var(--accent); }
 
     /* FOOTER */
@@ -123,11 +146,16 @@
     footer p { font-size: 0.78rem; letter-spacing: 0.05em; }
 
     /* FADE IN AL SCROLL */
-    .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
     .fade-up.delay-1 { transition-delay: 0.1s; }
     .fade-up.delay-2 { transition-delay: 0.2s; }
     .fade-up.delay-3 { transition-delay: 0.3s; }
+    .fade-section { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+    .fade-section.visible { opacity: 1; transform: translateY(0); }
 
     /* BOTÓN FLOTANTE */
     .fab {
@@ -146,14 +174,31 @@
     @keyframes pulse { 0%,100% { transform: scale(1); opacity:1; } 50% { transform: scale(1.5); opacity:0.6; } }
 
     /* HERO ANIMADO */
-    .hero-left > * { opacity: 0; transform: translateY(24px); animation: heroIn 0.8s ease forwards; }
+    .hero-left > * { opacity: 0; transform: translateY(24px); animation: fadeInUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
     .hero-left .hero-eyebrow { animation-delay: 0.1s; }
     .hero-left h1 { animation-delay: 0.25s; }
     .hero-left p { animation-delay: 0.4s; }
     .hero-left .hero-btns { animation-delay: 0.55s; }
-    .hero-right img { animation: heroImgIn 1.2s ease forwards; }
-    @keyframes heroIn { to { opacity: 1; transform: translateY(0); } }
+    .hero-right img { animation: heroImgIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes heroImgIn { from { opacity: 0; transform: scale(1.04); } to { opacity: 1; transform: scale(1); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .fade-up, .fade-section { opacity: 1; transform: none; }
+      .hero-left > * { opacity: 1; transform: none; }
+      .hero-right img { opacity: 1; transform: none; }
+      .product-card:hover { transform: none; box-shadow: none; }
+      .hero-right:hover img,
+      .contact-img:hover img,
+      .product-card:hover .product-img img { transform: none; }
+      .fab-dot { animation: none; }
+    }
 
     /* MOBILE */
     @media (max-width: 768px) {
@@ -224,7 +269,7 @@
     <!-- PRODUCTS -->
     <section class="products" id="productos">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head fade-section">
           <div>
             <div class="section-eyebrow">Nuestros packs</div>
             <h2 class="section-title">Ideas listas para regalar</h2>
@@ -300,8 +345,8 @@
     <!-- HOW -->
     <section class="how" id="como-funciona">
       <div class="container">
-        <div class="section-eyebrow">El proceso</div>
-        <h2 class="section-title">Tres pasos para tu regalo perfecto</h2>
+        <div class="section-eyebrow fade-section">El proceso</div>
+        <h2 class="section-title fade-section">Tres pasos para tu regalo perfecto</h2>
         <div class="how-grid">
           <div class="how-item fade-up">
             <div class="how-num">01</div>
@@ -329,7 +374,7 @@
           <div class="contact-img">
             <img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=800&q=85" alt="Contacto La Llar del Dolç">
           </div>
-          <div class="contact-text">
+          <div class="contact-text fade-section">
             <div class="section-eyebrow">Contacto</div>
             <h2>¿Tienes una idea especial?</h2>
             <p>Escríbenos o llámanos. Te ayudamos a crear el pack perfecto para cada ocasión. Respondemos en menos de 24 horas.</p>
@@ -370,10 +415,16 @@
     window.addEventListener('scroll', () => {
       fab.classList.toggle('show', window.scrollY > 400);
     });
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reveal = document.querySelectorAll('.fade-up, .fade-section');
+    if (reducedMotion) {
+      reveal.forEach(el => el.classList.add('visible'));
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.12 });
+      reveal.forEach(el => observer.observe(el));
+    }
   </script>
 
 </body>
