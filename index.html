@@ -122,6 +122,39 @@
     .footer-logo em { font-style: italic; color: var(--accent); }
     footer p { font-size: 0.78rem; letter-spacing: 0.05em; }
 
+    /* FADE IN AL SCROLL */
+    .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.delay-1 { transition-delay: 0.1s; }
+    .fade-up.delay-2 { transition-delay: 0.2s; }
+    .fade-up.delay-3 { transition-delay: 0.3s; }
+
+    /* BOTÓN FLOTANTE */
+    .fab {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+      display: flex; align-items: center; gap: 0.6rem;
+      background: var(--ink); color: var(--white);
+      padding: 0.75rem 1.4rem; border-radius: 999px;
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      box-shadow: 0 8px 24px rgba(26,23,20,0.25);
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s;
+      opacity: 0; pointer-events: none;
+    }
+    .fab.show { opacity: 1; pointer-events: auto; }
+    .fab:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(26,23,20,0.35); }
+    .fab-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { transform: scale(1); opacity:1; } 50% { transform: scale(1.5); opacity:0.6; } }
+
+    /* HERO ANIMADO */
+    .hero-left > * { opacity: 0; transform: translateY(24px); animation: heroIn 0.8s ease forwards; }
+    .hero-left .hero-eyebrow { animation-delay: 0.1s; }
+    .hero-left h1 { animation-delay: 0.25s; }
+    .hero-left p { animation-delay: 0.4s; }
+    .hero-left .hero-btns { animation-delay: 0.55s; }
+    .hero-right img { animation: heroImgIn 1.2s ease forwards; }
+    @keyframes heroIn { to { opacity: 1; transform: translateY(0); } }
+    @keyframes heroImgIn { from { opacity: 0; transform: scale(1.04); } to { opacity: 1; transform: scale(1); } }
+
     /* MOBILE */
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -177,13 +210,13 @@
     <div class="strip">
       <div class="container">
         <div class="strip-inner">
-          <div class="strip-item"><div class="num">4</div><div class="label">Packs disponibles</div></div>
+          <div class="strip-item fade-up"><div class="num">4</div><div class="label">Packs disponibles</div></div>
           <div class="strip-sep"></div>
-          <div class="strip-item"><div class="num">100%</div><div class="label">Personalizable</div></div>
+          <div class="strip-item fade-up delay-1"><div class="num">100%</div><div class="label">Personalizable</div></div>
           <div class="strip-sep"></div>
-          <div class="strip-item"><div class="num">✦</div><div class="label">Hecho con mimo</div></div>
+          <div class="strip-item fade-up delay-2"><div class="num">✦</div><div class="label">Hecho con mimo</div></div>
           <div class="strip-sep"></div>
-          <div class="strip-item"><div class="num">24h</div><div class="label">Respuesta garantizada</div></div>
+          <div class="strip-item fade-up delay-3"><div class="num">24h</div><div class="label">Respuesta garantizada</div></div>
         </div>
       </div>
     </div>
@@ -200,7 +233,7 @@
         </div>
         <div class="products-grid">
 
-          <div class="product-card">
+          <div class="product-card fade-up">
             <div class="product-img">
               <img src="https://images.unsplash.com/photo-1512909006721-3d6018887383?w=700&q=80" alt="Pack Bienvenida">
             </div>
@@ -215,7 +248,7 @@
             </div>
           </div>
 
-          <div class="product-card">
+          <div class="product-card fade-up delay-1">
             <div class="product-img">
               <img src="https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=700&q=80" alt="Pack Gourmet">
             </div>
@@ -230,7 +263,7 @@
             </div>
           </div>
 
-          <div class="product-card">
+          <div class="product-card fade-up delay-2">
             <div class="product-img">
               <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=700&q=80" alt="Pack Spa">
             </div>
@@ -245,7 +278,7 @@
             </div>
           </div>
 
-          <div class="product-card">
+          <div class="product-card fade-up delay-3">
             <div class="product-img">
               <img src="https://images.unsplash.com/photo-1543157145-f78c636d023d?w=700&q=80" alt="Pack Dulce Hogar">
             </div>
@@ -270,17 +303,17 @@
         <div class="section-eyebrow">El proceso</div>
         <h2 class="section-title">Tres pasos para tu regalo perfecto</h2>
         <div class="how-grid">
-          <div class="how-item">
+          <div class="how-item fade-up">
             <div class="how-num">01</div>
             <h3>Elige tu pack</h3>
             <p>Selecciona uno de nuestros lotes o cuéntanos qué te gustaría incluir. No hay límites.</p>
           </div>
-          <div class="how-item">
+          <div class="how-item fade-up delay-1">
             <div class="how-num">02</div>
             <h3>Personaliza</h3>
             <p>Añade una dedicatoria, elige colores o incluye productos extra según la ocasión y el destinatario.</p>
           </div>
-          <div class="how-item">
+          <div class="how-item fade-up delay-2">
             <div class="how-num">03</div>
             <h3>Recibe y regala</h3>
             <p>Preparamos tu pedido con mimo y te lo enviamos listo para sorprender a quien más quieres.</p>
@@ -326,6 +359,22 @@
       </div>
     </div>
   </footer>
+
+  <a href="#contacto" class="fab" id="fab">
+    <span class="fab-dot"></span>
+    Hacer pedido
+  </a>
+
+  <script>
+    const fab = document.getElementById('fab');
+    window.addEventListener('scroll', () => {
+      fab.classList.toggle('show', window.scrollY > 400);
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
