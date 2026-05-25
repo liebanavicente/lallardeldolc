@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La Llar del Dolç — Lotes y packs regalo personalizados</title>
+  <meta name="description" content="Demo de catalogo para lotes y packs regalo personalizados con pedido rapido por WhatsApp.">
+  <meta property="og:title" content="La Llar del Dolç — Packs regalo personalizados">
+  <meta property="og:description" content="Elige un pack, personalizalo y pide informacion en un mensaje.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=1200&q=85">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -222,12 +227,12 @@
   <header>
     <div class="container">
       <nav>
-        <span class="logo">La Llar <em>del Dolç</em></span>
+        <span class="logo" data-business-logo>La Llar <em>del Dolç</em></span>
         <button class="menu-toggle" type="button" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
         <ul class="nav-links">
           <li><a href="#productos">Productos</a></li>
           <li><a href="#como-funciona">Cómo funciona</a></li>
-          <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+          <li><a href="#contacto" class="nav-cta" data-whatsapp="general">Contacto</a></li>
         </ul>
       </nav>
     </div>
@@ -242,7 +247,7 @@
         <h1>Regala algo <em>verdaderamente</em> único</h1>
         <p>Lotes y packs de regalo elaborados con mimo. Cada detalle pensado para que quien lo recibe lo recuerde.</p>
         <div class="hero-btns">
-          <a href="#contacto" class="btn-dark">Hacer un pedido</a>
+          <a href="#contacto" class="btn-dark" data-whatsapp="general">Hacer un pedido</a>
           <a href="#productos" class="btn-outline">Ver packs</a>
         </div>
       </div>
@@ -288,7 +293,7 @@
               <p>Taza artesanal personalizada, infusiones selectas y galletas caseras. Perfecto para estrenar hogar u oficina.</p>
               <div class="product-footer">
                 <span class="product-price">32 €<small>aprox.</small></span>
-                <a href="#contacto" class="product-link">Solicitar</a>
+                <a href="#contacto" class="product-link" data-whatsapp="Pack Bienvenida">Solicitar</a>
               </div>
             </div>
           </div>
@@ -303,7 +308,7 @@
               <p>Quesos seleccionados, mermeladas artesanas, crackers y vino o mosto de la zona.</p>
               <div class="product-footer">
                 <span class="product-price">58 €<small>aprox.</small></span>
-                <a href="#contacto" class="product-link">Solicitar</a>
+                <a href="#contacto" class="product-link" data-whatsapp="Pack Gourmet">Solicitar</a>
               </div>
             </div>
           </div>
@@ -318,7 +323,7 @@
               <p>Crema hidratante, sales de baño, vela aromática y toalla de algodón suave.</p>
               <div class="product-footer">
                 <span class="product-price">45 €<small>aprox.</small></span>
-                <a href="#contacto" class="product-link">Solicitar</a>
+                <a href="#contacto" class="product-link" data-whatsapp="Pack Spa">Solicitar</a>
               </div>
             </div>
           </div>
@@ -333,7 +338,7 @@
               <p>Velas, miel local, té aromático y detalle decorativo para un rincón acogedor.</p>
               <div class="product-footer">
                 <span class="product-price">38 €<small>aprox.</small></span>
-                <a href="#contacto" class="product-link">Solicitar</a>
+                <a href="#contacto" class="product-link" data-whatsapp="Pack Dulce Hogar">Solicitar</a>
               </div>
             </div>
           </div>
@@ -381,14 +386,14 @@
             <div class="contact-links">
               <div class="contact-item">
                 <span class="lbl">Email</span>
-                <a href="mailto:info@llaroldolc.com">info@llaroldolc.com</a>
+                <a href="mailto:info@llardeldolc.com" data-business-email>info@llardeldolc.com</a>
               </div>
               <div class="contact-item">
                 <span class="lbl">Teléfono</span>
-                <a href="tel:+34612345678">612 345 678</a>
+                <a href="tel:+34612345678" data-business-phone>612 345 678</a>
               </div>
             </div>
-            <a href="mailto:info@llaroldolc.com" class="btn-dark">Enviar un mensaje</a>
+            <a href="#contacto" class="btn-dark" data-whatsapp="general">Enviar un mensaje</a>
           </div>
         </div>
       </div>
@@ -399,18 +404,52 @@
   <footer>
     <div class="container">
       <div class="footer-inner">
-        <div class="footer-logo">La Llar <em>del Dolç</em></div>
-        <p>© 2026 La Llar del Dolç — Regala momentos únicos</p>
+        <div class="footer-logo" data-business-logo>La Llar <em>del Dolç</em></div>
+        <p data-business-footer>© 2026 La Llar del Dolç — Regala momentos únicos</p>
       </div>
     </div>
   </footer>
 
-  <a href="#contacto" class="fab" id="fab">
+  <a href="#contacto" class="fab" id="fab" data-whatsapp="general">
     <span class="fab-dot"></span>
     Hacer pedido
   </a>
 
   <script>
+    const demoConfig = {
+      businessName: 'La Llar del Dolç',
+      businessLogoHtml: 'La Llar <em>del Dolç</em>',
+      email: 'info@llardeldolc.com',
+      phoneDisplay: '612 345 678',
+      phoneHref: '+34612345678',
+      whatsappNumber: '34612345678',
+      whatsappIntro: 'Hola, me interesa esta demo de packs regalo.',
+    };
+
+    document.querySelectorAll('[data-business-logo]').forEach((el) => {
+      el.innerHTML = demoConfig.businessLogoHtml;
+    });
+    document.querySelectorAll('[data-business-email]').forEach((el) => {
+      el.textContent = demoConfig.email;
+      el.href = `mailto:${demoConfig.email}`;
+    });
+    document.querySelectorAll('[data-business-phone]').forEach((el) => {
+      el.textContent = demoConfig.phoneDisplay;
+      el.href = `tel:${demoConfig.phoneHref}`;
+    });
+    document.querySelector('[data-business-footer]').textContent = `© 2026 ${demoConfig.businessName} — Regala momentos únicos`;
+
+    document.querySelectorAll('[data-whatsapp]').forEach((link) => {
+      const pack = link.dataset.whatsapp;
+      const message = pack === 'general'
+        ? demoConfig.whatsappIntro
+        : `Hola, me interesa el ${pack}. ¿Me puedes dar más información?`;
+
+      link.href = `https://wa.me/${demoConfig.whatsappNumber}?text=${encodeURIComponent(message)}`;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    });
+
     const fab = document.getElementById('fab');
     window.addEventListener('scroll', () => {
       fab.classList.toggle('show', window.scrollY > 400);
